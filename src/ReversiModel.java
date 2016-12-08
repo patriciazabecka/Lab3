@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
  * of this class is to illustrate shortcomings in the game framework.
  * 
  * @author evensen
- * hej
+ *
  * 
  */
 public class ReversiModel extends GameModel {
