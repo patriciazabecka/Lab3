@@ -8,25 +8,6 @@ import java.awt.Dimension;
  */
 public interface GameModel {
 
-
-
-
-	/**
-	 * Returns the GameTile in logical position (x,y) of the gameboard.
-	 * 
-	 * @param x
-	 *            Coordinate in the gameboard matrix.
-	 * @param y
-	 *            Coordinate in the gameboard matrix.
-	 */
-
-	public GameTile getGameboardState(final int x, final int y); //{return this.gameboardState[x][y]; }
-
-	/**
-	 * Returns the size of the gameboard.
-	 */
-	public Dimension getGameboardSize();// {return this.gameboardSize;}
-
 	/**
 	 * This method is called repeatedly so that the game can update it's state.
 	 * 
@@ -34,4 +15,20 @@ public interface GameModel {
 	 *            The most recent keystroke.
 	 */
 	public void gameUpdate(int lastKey) throws GameOverException;
+
+    /**
+     * Returns the size of the gameboard.
+     */
+    public Dimension getGameboardSize(Dimension gameboardSize);
+
+    /**
+     * Returns the GameTile in logical position (x,y) of the gameboard.
+     *
+     * @param pos
+     *            The position in the gameboard matrix.
+     */
+    public GameTile getGameboardState(final Position pos);
+
+    public GameTile getGameboardState(final int x, final int y);
+
 }
