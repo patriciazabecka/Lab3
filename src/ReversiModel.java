@@ -346,17 +346,17 @@ public class ReversiModel implements GameModel {
 
 	@Override
 	public Dimension getGameboardSize(Dimension gameboardSize) {
-		return null;
+		return this.gameboardSize;
 	}
 
 	@Override
 	public GameTile getGameboardState(Position pos) {
-		return null;
+		return getGameboardState(pos.getX(), pos.getY());
 	}
 
 	@Override
 	public GameTile getGameboardState(int x, int y) {
-		return null;
+		return this.gameboardState[x][y];
 	}
 
 	private void removeCursor(final Position oldCursorPos) {
@@ -386,5 +386,7 @@ public class ReversiModel implements GameModel {
 		}
 		gameUtil.setGameboardState(this.cursorPos, cursoredTile, gameboardState);
 	}
+
+
 
 }

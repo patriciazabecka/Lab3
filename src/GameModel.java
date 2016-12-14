@@ -44,6 +44,6 @@ public interface GameModel {
 	 * @param pos
 	 *            The position in the gameboard matrix.
 	 */
-	public GameTile getGameboardState(final Position pos, GameTile [][] gameboardState); //{return getGameboardState(pos.getX(), pos.getY(), gameboardState);}
+//	public GameTile getGameboardState(final Position pos, GameTile [][] gameboardState); //{return getGameboardState(pos.getX(), pos.getY(), gameboardState);}
 
 }
