@@ -338,6 +338,21 @@ public class ReversiModel implements GameModel {
 		}
 	}
 
+	@Override
+	public Dimension getGameboardSize(Dimension gameboardSize) {
+		return null;
+	}
+
+	@Override
+	public GameTile getGameboardState(Position pos) {
+		return null;
+	}
+
+	@Override
+	public GameTile getGameboardState(int x, int y) {
+		return null;
+	}
+
 	private void removeCursor(final Position oldCursorPos) {
 		GameTile t = getGameboardState(this.cursorPos);
 		if (t instanceof CompositeTile) {

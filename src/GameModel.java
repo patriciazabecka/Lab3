@@ -8,6 +8,13 @@ import java.awt.Dimension;
  */
 public interface GameModel {
 
+
+	/** The size of the state matrix. */
+	Dimension gameboardSize = Constants.getGameSize();
+
+	/** A Matrix containing the state of the gameboard. */
+	GameTile[][] gameboardState = new GameTile[gameboardSize.width][gameboardSize.height];
+
 	/**
 	 * This method is called repeatedly so that the game can update it's state.
 	 * 
