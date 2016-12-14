@@ -26,7 +26,7 @@ public interface GameModel {
     /**
      * Returns the size of the gameboard.
      */
-    public Dimension getGameboardSize(Dimension gameboardSize);
+    public Dimension getGameboardSize();
 
     /**
      * Returns the GameTile in logical position (x,y) of the gameboard.
