@@ -31,4 +31,12 @@ public interface GameModel {
 
     public GameTile getGameboardState(final int x, final int y);
 
+	/**
+	 * Returns the GameTile in logical position (x,y) of the gameboard.
+	 *
+	 * @param pos
+	 *            The position in the gameboard matrix.
+	 */
+	public GameTile getGameboardState(final Position pos, GameTile [][] gameboardState); //{return getGameboardState(pos.getX(), pos.getY(), gameboardState);}
+
 }
