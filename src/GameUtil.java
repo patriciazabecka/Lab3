@@ -17,14 +17,13 @@ public class GameUtil {
     }
     /**
      * Set the tile on a specified position in the gameboard.
-     *
      * @param pos
      *            The position in the gameboard matrix.
      * @param tile
-     *            The type of tile to paint in specified position
+     * @param gameBoardState
      */
-    public void setGameboardState(final Position pos, final GameTile tile, final GameTile [][] gameboardState) {
-        setGameboardState(pos.getX(), pos.getY(), tile, gameboardState);
+    public void setGameboardState(final Position pos, final GameTile tile, GameTile[][] gameBoardState) {
+        setGameboardState(pos.getX(), pos.getY(), tile, gameBoardState);
     }
 
     public void setGameboardState(final int x, final int y, final GameTile tile, final GameTile [][]gameboardState) {
