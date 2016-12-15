@@ -23,6 +23,7 @@ import java.util.List;
  * som implementerar interfacet.
  */
 public class GoldModel implements GameModel {
+
     private final GameTile[][] gameboardState= new GameTile[gameboardSize.width][gameboardSize.height];
 
     public enum Directions {
@@ -219,17 +220,17 @@ public class GoldModel implements GameModel {
 
     @Override
     public Dimension getGameboardSize() {
-        return null;
+        return this.gameboardSize;
     }
 
     @Override
     public GameTile getGameboardState(Position pos) {
-        return null;
+        return getGameboardState(pos.getX(), pos.getY());
     }
 
     @Override
     public GameTile getGameboardState(int x, int y) {
-        return null;
+        return gameboardState[x][y];
     }
 
     /**
