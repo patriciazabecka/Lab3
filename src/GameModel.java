@@ -1,13 +1,14 @@
 import java.awt.Dimension;
 
 /**
- * Common superclass for all game model classes.
+ * Common Interface for all game model classes.
  * 
  * Constructors of subclasses should initiate matrix elements and additional,
  * game-dependent fields.
  */
 public interface GameModel {
 
+	//Klassvariabler(då static, kan ej ha instanser av interface), ärvs automatiskt av klasser som implementerar detta.
 
 	/** The size of the state matrix. */
 	Dimension gameboardSize = Constants.getGameSize();
@@ -44,6 +45,6 @@ public interface GameModel {
 	 * @param pos
 	 *            The position in the gameboard matrix.
 	 */
-//	public GameTile getGameboardState(final Position pos, GameTile [][] gameboardState); //{return getGameboardState(pos.getX(), pos.getY(), gameboardState);}
+
 
 }

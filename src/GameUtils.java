@@ -15,13 +15,12 @@ public class GameUtils {
      *
      * @param gameboardSize A Matrix containing the state of the gameboard.
      *
-     * @param gameboardState The size of the state matrix.
-     *
+     * @return gameboardState A gameboard matrix
      */
 
-   public GameTile [][] createGameboard(GameTile [][] gameboardState, Dimension gameboardSize) {
+   public GameTile [][] createGameboard(Dimension gameboardSize) {
         gameboardSize = Constants.getGameSize(); //istället för variabel, detta för att hämta storleken genom metodanrop
-        gameboardState =  new GameTile[gameboardSize.width][gameboardSize.height];
+        GameTile [][] gameboardState =  new GameTile[gameboardSize.width][gameboardSize.height];
         return gameboardState;
     }
 
