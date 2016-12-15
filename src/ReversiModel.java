@@ -11,9 +11,7 @@ import java.awt.event.KeyEvent;
  * 
  */
 public class ReversiModel extends GameUtil {
-	/** Create a new object from GameUtil
-	 *
-	 */
+
 
 	public enum Direction {
 			EAST(1, 0),
