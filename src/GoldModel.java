@@ -22,8 +22,10 @@ import java.util.List;
  * instansvariablerna i klassen. Dessa ligger nu i interfacet som klassvariabler och ärvs automatiskt av alla
  * som implementerar interfacet.
  */
-public class GoldModel  {
-	public enum Directions {
+public class GoldModel implements GameModel {
+    private final GameTile[][] gameboardState= new GameTile[gameboardSize.width][gameboardSize.height];
+
+    public enum Directions {
 		EAST(1, 0),
 		WEST(-1, 0),
 		NORTH(0, -1),
@@ -99,7 +101,7 @@ public class GoldModel  {
 		// Blank out the whole gameboard
 		for (int i = 0; i < gameboardSize.width; i++) {
 			for (int j = 0; j < gameboardSize.height; j++) {
-				setGameboardState(i, j, BLANK_TILE);
+				GameUtil.setGameboardState(i, j, BLANK_TILE,gameboardState);
 			}
 		}
 
@@ -125,7 +127,7 @@ public class GoldModel  {
 		} while (!isPositionEmpty(newCoinPos));
 
 		// ... add a new coin to the empty tile.
-		setGameboardState(newCoinPos, COIN_TILE);
+		GameUtil.setGameboardState(newCoinPos, COIN_TILE, );
 		this.coins.add(newCoinPos);
 	}
 
