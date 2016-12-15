@@ -14,12 +14,15 @@ import java.util.List;
  * collector leaves game board.
  */
 
-// Skapat ett GameUtil objekt så att vi kan anropa metoder från klassen, detta genom gameUtil.metodanrop
-//La till en extra parameter GameTile [][] i GameUtil, därav fick detta läggas till i alla metoder i spelmodelerna
-	// Ärver klassvariabler från interfacet GoldModel
 
-
-public class GoldModel implements GameModel {
+/**
+ * Vi har skrivit gameUtil.metoder för att anropa metod i klassen GameUtil. Vi kan göra detta
+ * pga att vi har skapat ett nytt objekt av klassen GameUtil. Vi la till en extra parameter eftersom i
+ * metoderna eftersom vi förändrade antalet parametrar i GameUtilmetoderna i och med att vi tog bort
+ * instansvariablerna i klassen. Dessa ligger nu i interfacet som klassvariabler och ärvs automatiskt av alla
+ * som implementerar interfacet.
+ */
+public class GoldModel  {
 	public enum Directions {
 		EAST(1, 0),
 		WEST(-1, 0),
@@ -87,12 +90,6 @@ public class GoldModel implements GameModel {
 	/** The number of coins found. */
 	private int score;
 
-	/** Create a new object from GameUtil
-	 *
-	 */
-
-	GameUtil gameUtil = new GameUtil();
-
 	/**
 	 * Create a new model for the gold game.
 	 */
@@ -102,13 +99,13 @@ public class GoldModel implements GameModel {
 		// Blank out the whole gameboard
 		for (int i = 0; i < gameboardSize.width; i++) {
 			for (int j = 0; j < gameboardSize.height; j++) {
-				gameUtil.setGameboardState(i, j, BLANK_TILE, gameboardState);
+				setGameboardState(i, j, BLANK_TILE);
 			}
 		}
 
 		// Insert the collector in the middle of the gameboard.
 		this.collectorPos = new Position(gameboardSize.width / 2, gameboardSize.height / 2);
-		gameUtil.setGameboardState(this.collectorPos, COLLECTOR_TILE, gameboardState);
+		setGameboardState(this.collectorPos, COLLECTOR_TILE);
 
 		// Insert coins into the gameboard.
 		for (int i = 0; i < COIN_START_AMOUNT; i++) {
@@ -128,7 +125,7 @@ public class GoldModel implements GameModel {
 		} while (!isPositionEmpty(newCoinPos));
 
 		// ... add a new coin to the empty tile.
-		gameUtil.setGameboardState(newCoinPos, COIN_TILE, GameModel.gameboardState);
+		setGameboardState(newCoinPos, COIN_TILE);
 		this.coins.add(newCoinPos);
 	}
 
@@ -188,7 +185,7 @@ public class GoldModel implements GameModel {
 		updateDirection(lastKey);
 
 		// Erase the previous position.
-		gameUtil.setGameboardState(this.collectorPos, BLANK_TILE, gameboardState);
+		setGameboardState(this.collectorPos, BLANK_TILE);
 		// Change collector position.
 		this.collectorPos = getNextCollectorPos();
 
@@ -196,7 +193,7 @@ public class GoldModel implements GameModel {
 			throw new GameOverException(this.score);
 		}
 		// Draw collector at new position.
-		gameUtil.setGameboardState(this.collectorPos, COLLECTOR_TILE, gameboardState);
+		setGameboardState(this.collectorPos, COLLECTOR_TILE);
 
 		// Remove the coin at the new collector position (if any)
 		if (this.coins.remove(this.collectorPos)) {
@@ -211,36 +208,36 @@ public class GoldModel implements GameModel {
 		// Remove one of the coins
 		Position oldCoinPos = this.coins.get(0);
 		this.coins.remove(0);
-		gameUtil.setGameboardState(oldCoinPos, BLANK_TILE, gameboardState);
+		setGameboardState(oldCoinPos, BLANK_TILE);
 
 		// Add a new coin (simulating moving one coin)
 		addCoin();
 
 	}
 
-	@Override
-	public Dimension getGameboardSize(Dimension gameboardSize) {
-		return this.gameboardSize;
-	}
+    @Override
+    public Dimension getGameboardSize() {
+        return null;
+    }
 
-	@Override
-	public GameTile getGameboardState(Position pos) {
-		return getGameboardState(pos.getX(), pos.getY());
-	}
+    @Override
+    public GameTile getGameboardState(Position pos) {
+        return null;
+    }
 
-	@Override
-	public GameTile getGameboardState(int x, int y) {
-		return this.gameboardState[x][y];
-	}
+    @Override
+    public GameTile getGameboardState(int x, int y) {
+        return null;
+    }
 
-	/**
+    /**
 	 * 
 	 * @param pos The position to test.
 	 * @return <code>false</code> if the position is outside the playing field, <code>true</code> otherwise.
 	 */
 	private boolean isOutOfBounds(Position pos) {
-		return pos.getX() < 0 || pos.getX() >= getGameboardSize(gameboardSize).width
-				|| pos.getY() < 0 || pos.getY() >= getGameboardSize(gameboardSize).height;
+		return pos.getX() < 0 || pos.getX() >= getGameboardSize().width
+				|| pos.getY() < 0 || pos.getY() >= getGameboardSize().height;
 	}
 
 }

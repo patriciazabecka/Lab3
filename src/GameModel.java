@@ -15,7 +15,7 @@ public interface GameModel {
 
 	/** A Matrix containing the state of the gameboard. */
 	GameTile[][] gameboardState = new GameTile[gameboardSize.width][gameboardSize.height];
-
+// flytta till goldmodel
 	/**
 	 * This method is called repeatedly so that the game can update it's state.
 	 * 
