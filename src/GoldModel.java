@@ -22,7 +22,7 @@ import java.util.List;
  * instansvariablerna i klassen. Dessa ligger nu i interfacet som klassvariabler och ärvs automatiskt av alla
  * som implementerar interfacet.
  */
-public class GoldModel extends GameUtil {
+public class GoldModel  {
 	public enum Directions {
 		EAST(1, 0),
 		WEST(-1, 0),
@@ -214,7 +214,23 @@ public class GoldModel extends GameUtil {
 		addCoin();
 
 	}
-	/**
+
+    @Override
+    public Dimension getGameboardSize() {
+        return null;
+    }
+
+    @Override
+    public GameTile getGameboardState(Position pos) {
+        return null;
+    }
+
+    @Override
+    public GameTile getGameboardState(int x, int y) {
+        return null;
+    }
+
+    /**
 	 * 
 	 * @param pos The position to test.
 	 * @return <code>false</code> if the position is outside the playing field, <code>true</code> otherwise.

@@ -10,9 +10,7 @@ import java.awt.event.KeyEvent;
  *
  * 
  */
-public class ReversiModel extends GameUtil {
-
-
+public class ReversiModel implements GameModel {
 	public enum Direction {
 			EAST(1, 0),
 			SOUTHEAST(1, 1),
@@ -31,7 +29,6 @@ public class ReversiModel extends GameUtil {
 			this.xDelta = xDelta;
 			this.yDelta = yDelta;
 		}
-
 
 		public int getXDelta() {
 			return this.xDelta;
@@ -324,7 +321,7 @@ public class ReversiModel extends GameUtil {
 	public void gameUpdate(final int lastKey) throws GameOverException {
 		if (!this.gameOver) {
 			Position nextCursorPos = getNextCursorPos(updateDirection(lastKey));
-			Dimension boardSize = gameboardSize;
+			Dimension boardSize = getGameboardSize();
 			int nextX =
 					Math.max(0,
 							Math.min(nextCursorPos.getX(), boardSize.width - 1));
@@ -341,7 +338,22 @@ public class ReversiModel extends GameUtil {
 		}
 	}
 
-	private void removeCursor(final Position oldCursorPos) {
+    @Override
+    public Dimension getGameboardSize() {
+        return null;
+    }
+
+    @Override
+    public GameTile getGameboardState(Position pos) {
+        return null;
+    }
+
+    @Override
+    public GameTile getGameboardState(int x, int y) {
+        return null;
+    }
+
+    private void removeCursor(final Position oldCursorPos) {
 		GameTile t = getGameboardState(this.cursorPos);
 		if (t instanceof CompositeTile) {
 			CompositeTile c = (CompositeTile) t;
