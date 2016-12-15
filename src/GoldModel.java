@@ -90,10 +90,6 @@ public class GoldModel extends GameUtil {
 	/** The number of coins found. */
 	private int score;
 
-	/** Create a new object from GameUtil.
-	 *
-	 */
-	GameUtil gameUtil = new GameUtil();
 	/**
 	 * Create a new model for the gold game.
 	 */
@@ -103,13 +99,13 @@ public class GoldModel extends GameUtil {
 		// Blank out the whole gameboard
 		for (int i = 0; i < gameboardSize.width; i++) {
 			for (int j = 0; j < gameboardSize.height; j++) {
-				gameUtil.setGameboardState(i, j, BLANK_TILE);
+				setGameboardState(i, j, BLANK_TILE);
 			}
 		}
 
 		// Insert the collector in the middle of the gameboard.
 		this.collectorPos = new Position(gameboardSize.width / 2, gameboardSize.height / 2);
-		gameUtil.setGameboardState(this.collectorPos, COLLECTOR_TILE);
+		setGameboardState(this.collectorPos, COLLECTOR_TILE);
 
 		// Insert coins into the gameboard.
 		for (int i = 0; i < COIN_START_AMOUNT; i++) {
@@ -129,7 +125,7 @@ public class GoldModel extends GameUtil {
 		} while (!isPositionEmpty(newCoinPos));
 
 		// ... add a new coin to the empty tile.
-		gameUtil.setGameboardState(newCoinPos, COIN_TILE);
+		setGameboardState(newCoinPos, COIN_TILE);
 		this.coins.add(newCoinPos);
 	}
 
@@ -189,7 +185,7 @@ public class GoldModel extends GameUtil {
 		updateDirection(lastKey);
 
 		// Erase the previous position.
-		gameUtil.setGameboardState(this.collectorPos, BLANK_TILE);
+		setGameboardState(this.collectorPos, BLANK_TILE);
 		// Change collector position.
 		this.collectorPos = getNextCollectorPos();
 
@@ -197,7 +193,7 @@ public class GoldModel extends GameUtil {
 			throw new GameOverException(this.score);
 		}
 		// Draw collector at new position.
-		gameUtil.setGameboardState(this.collectorPos, COLLECTOR_TILE);
+		setGameboardState(this.collectorPos, COLLECTOR_TILE);
 
 		// Remove the coin at the new collector position (if any)
 		if (this.coins.remove(this.collectorPos)) {
@@ -212,7 +208,7 @@ public class GoldModel extends GameUtil {
 		// Remove one of the coins
 		Position oldCoinPos = this.coins.get(0);
 		this.coins.remove(0);
-		gameUtil.setGameboardState(oldCoinPos, BLANK_TILE);
+		setGameboardState(oldCoinPos, BLANK_TILE);
 
 		// Add a new coin (simulating moving one coin)
 		addCoin();
