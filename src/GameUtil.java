@@ -4,7 +4,7 @@ import java.awt.Dimension;
 /**
  * Created by juliaortheden on 2016-12-08.
  */
-public class GameUtil implements GameModel{
+public abstract class GameUtil implements GameModel{
 
     /**
      * Create a new game model.
